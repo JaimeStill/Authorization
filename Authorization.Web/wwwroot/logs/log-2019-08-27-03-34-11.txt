@@ -1,0 +1,26 @@
+ContextDetails
+
+User: ehowell
+Local IP: ::1
+Local Port: 5000
+Remote IP: ::1
+Remote Port: 62390
+Content Type: 
+URL: http://localhost:5000/api/user/syncUser
+
+Headers
+Connection : keep-alive
+Accept : application/json, text/plain, */*
+Accept-Encoding : gzip, deflate, br
+Accept-Language : en-US,en;q=0.9
+Cookie : .AspNetCore.MicrosoftCookie=CfDJ8I7vgPqONj1Gjf9Ui-4P9HDeu-HJo5PxTs6g7PlWGR4OlV0fwk3GTJi6YxT2nGagJT7DicLK84g1xuNDw6BvErIy2JLhCq81O6hSDTlyzXg7KP-6VH0vmXTIBTiIaniBO_J32qyrEC6-XcUf76K78jXL0b8ItFsV9OPIGP8g9YP3bqBVRyedEjbcBlFz6uNijsUIPVTfv6_TYXIGhfIrnYisuSCVHyQRypsYGZrvQNKEzFth0epxBGSvNxSeOJPyw7dltYCvlwo4Q8YREYrmUHQZUPSLyaAy3Tc3fjKQj8HyFFjhYZRetjGpo-ljpTBpsPnYwQpo2OtgLs4x0sJyTmro7npZ_SMdIE0J5o4OBVuFluf2P8VosS-D3I9o1XUyF63vL1AIiOeDTwnTgXptn9Zvmb9PxvOxEgSNjFmtTr1WWqKpb34S4q229HnYW2dli7ZG5uAzjzcayKqImUJIyEqZuUDQaaZMgSLBVj9ywtPieiZX7IeRvYGg5egNyPzTEGeoqfhQKp4_fr3YlAJWNoJe7pV5dNh4yQhReetcTdcYVMGFnWl3eKoImcmttvPKZwJFzpHhxGExzVeNCXDgQKDd7BMbgRoAIbq_9ERdC-Wb0PjXLJ86JAjp_94aMBXfZ1OEQ9LttGOYqXZkWlzV_8FTXJt-VGL7anl1HJvHkSWpJ7hYmRoww3Ng9tImgXsWq0rBdsCVptMrvRByozRLwDND3cqh4PGO4NWpcjS74HZMyqLmwkLwPpI1MQ-j-TUpHEMsIKyDhGJo19cQ9OGCUHRMn6gZaLDtEULUaFbZP0F-u4wRkYnSRenqh2V27bFkKQ69ywbmIc_uzRZfc2aS1HiS9cDJUNnzIIgiUQNApmZRd5pvl_mijzt4EXgrHIzXvQ; .AspNetCore.Session=CfDJ8I7vgPqONj1Gjf9Ui%2B4P9HBkJ5FwuEI5iTT0C6ABfE3yqV8xbe2rxKR4n2jL0z9s5th%2Fy9xElqwxf8qmDdzWOAPR7tjcUnIDUZEMWGpEEY%2ByzR1L7rBFV0ltLWIRv7Uh5TEsTIyOHXZjc4H0CdcqfgZmzovnWO9Q5Vi3yt84fVXf; .AspNetCore.Cookies=CfDJ8I7vgPqONj1Gjf9Ui-4P9HA3B01DQFBuvA6LYyNdLdQzAVWSFFbTJ6NAlXUlqiABDGEEdJlFcOrkZipC00Kulm4R_-RMYiOgjjBJGijsSQOyN0sym8X2emL1A62Na-JyKXYtgikvHfvKrXxMBGqttPQxcs-j9mNF5mlI7U6xU_lm_EM9bVD0NbmVEhU0YNaDJOjERN1mNxIcWkd9KIOv6fO7FXmz51WD9F4BsStrL8T8AAcx-zRNb18_p4724fLm68wntUKN4cOMwOETLOpDp72uxsbFVPnS5BtG24_3eYYAWHAtGs31MbnM9AqcCmT7BsOMw16sHyZ8EbbPj6s_21_CnUIe711p-DHkOwwYpBVMJoDxQbUpahxS8cHU2L7ItLR1TocL-xNMbviVPawwl7UCxyhfJxiw34_av0qNmVskLlHAy_oUfhE7V2BRwHjdkxraBbf709B1wBum-o3W2qE
+Host : localhost:5000
+Referer : http://localhost:5000/
+User-Agent : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+DNT : 1
+Sec-Fetch-Mode : cors
+Sec-Fetch-Site : same-origin
+
+Exception Details
+Cannot open database "Authorization-dev" requested by the login. The login failed.
+Login failed for user 'ALIENRIG\jpsti'.
