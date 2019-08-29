@@ -7,6 +7,11 @@ import { AdminComponent } from './admin/admin.component';
 import { DeniedComponent } from './denied/denied.component';
 
 import {
+  AdminComponents,
+  AdminRoutes
+} from './admin';
+
+import {
   ConfigComponents,
   ConfigRoutes
 } from './config';
@@ -18,6 +23,7 @@ export const RouteComponents = [
   TechComponent,
   AdminComponent,
   DeniedComponent,
+  ...AdminComponents,
   ...ConfigComponents
 ];
 
@@ -26,7 +32,7 @@ export const Routes: Route[] = [
   { path: 'home', component: HomeComponent },
   { path: 'executive', component: ExecutiveComponent },
   { path: 'tech', component: TechComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, children: AdminRoutes },
   { path: 'denied', component: DeniedComponent },
   { path: '', redirectTo: 'config', pathMatch: 'full' },
   { path: '**', redirectTo: 'config', pathMatch: 'full' }

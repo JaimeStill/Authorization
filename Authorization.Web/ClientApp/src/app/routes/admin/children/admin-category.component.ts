@@ -4,27 +4,22 @@ import {
 } from '@angular/core';
 
 import { MatDialog } from '@angular/material';
-import { DataService } from '../../services';
 
 import {
   CategoryBinDialog,
   CategoryDialog,
-  ConfirmDialog,
-  DataBinDialog,
-  DataDialog
-} from '../../dialogs';
+  ConfirmDialog
+} from '../../../dialogs';
 
-import {
-  TableCategory,
-  TableDatum
-} from '../../models';
+import { DataService } from '../../../services';
+import { TableCategory } from '../../../models';
 
 @Component({
-  selector: 'home-route',
-  templateUrl: 'home.component.html',
+  selector: 'admin-category-route',
+  templateUrl: 'admin-category.component.html',
   providers: [DataService]
 })
-export class HomeComponent implements OnInit {
+export class AdminCategoryComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     public dataSvc: DataService
@@ -34,16 +29,15 @@ export class HomeComponent implements OnInit {
     this.dataSvc.getCategories();
   }
 
-  openCategoryBin = () => this.dialog.open(CategoryBinDialog, {
+  addCategory = () => this.dialog.open(CategoryDialog, {
+    data: {} as TableCategory,
     disableClose: true,
-    autoFocus: false,
-    width: '600px'
+    width: '800px'
   })
   .afterClosed()
-  .subscribe(() => this.dataSvc.getCategories());
+  .subscribe(res => res && this.dataSvc.getCategories());
 
-  openDataBin = () => this.dialog.open(DataBinDialog, {
-    disableClose: true,
+  openCategoryBin = () => this.dialog.open(CategoryBinDialog, {
     autoFocus: false,
     width: '600px'
   })
@@ -63,23 +57,6 @@ export class HomeComponent implements OnInit {
     .subscribe(async (result) => {
       if (result) {
         const res = await this.dataSvc.toggleCategoryDeleted(category);
-        res && this.dataSvc.getCategories();
-      }
-    });
-
-  editData = (data: TableDatum) => this.dialog.open(DataDialog, {
-    data: Object.assign({} as TableDatum, data),
-    disableClose: true,
-    width: '800px'
-  })
-  .afterClosed()
-  .subscribe(res => res && this.dataSvc.getCategories());
-
-  deleteData = (data: TableDatum) => this.dialog.open(ConfirmDialog)
-    .afterClosed()
-    .subscribe(async (result) => {
-      if (result) {
-        const res = await this.dataSvc.toggleDatumDeleted(data);
         res && this.dataSvc.getCategories();
       }
     });

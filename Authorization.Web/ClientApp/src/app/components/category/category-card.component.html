@@ -1,0 +1,18 @@
+<section class="background card elevated container"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         [style.width.px]="size">
+  <p class="mat-body-strong"
+     fxFlex>{{category.label}}</p>
+  <button mat-icon-button
+          color="warn"
+          matTooltip="Delete"
+          (click)="delete.emit(category)">
+    <mat-icon>delete_outline</mat-icon>
+  </button>
+  <button mat-icon-button
+          matTooltip="Edit"
+          (click)="edit.emit(category)">
+    <mat-icon>edit</mat-icon>
+  </button>
+</section>

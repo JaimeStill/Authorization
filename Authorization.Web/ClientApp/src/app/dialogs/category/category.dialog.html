@@ -1,0 +1,23 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>
+    <span *ngIf="category.id">Update Category</span>
+    <span *ngIf="!(category.id)">Add Category</span>
+  </h2>
+  <mat-dialog-content>
+    <section fxLayout="column"
+             fxLayoutAlign="start stretch"
+             class="container">
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <input matInput
+               [(ngModel)]="category.label">
+      </mat-form-field>
+    </section>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button
+            (click)="saveCategory()">Save</button>
+    <button mat-button
+            mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,42 @@
+<section fxLayout="column"
+         fxLayoutAlign="start stretch"
+         class="background card">
+  <section fxLayout="row"
+           fxLayoutAlign="start center"
+           class="container">
+    <p class="mat-title"
+       fxFlex>{{category.label}}</p>
+    <section fxLayout="row"
+             fxLayoutAlign="space-evenly center"
+             class="container"
+             *ngIf="editable">
+      <button mat-icon-button
+              color="warn"
+              (click)="delete.emit(category)">
+        <mat-icon>{{deleteIcon}}</mat-icon>
+      </button>
+      <button mat-icon-button
+              (click)="edit.emit(category)">
+        <mat-icon>{{editIcon}}</mat-icon>
+      </button>
+    </section>
+  </section>
+  <ng-template #loading>
+    <mat-progress-bar mode="indeterminate"
+                      color="accent"></mat-progress-bar>
+  </ng-template>
+  <ng-container *ngIf="dataSvc.data$ | async as data else loading">
+    <section fxLayout="row | wrap"
+             fxLayoutAlign="start start"
+             class="background stacked container"
+             *ngIf="data.length > 0">
+      <data-card *ngFor="let d of data"
+                 [data]="d"
+                 [editable]="dataEditable"
+                 (edit)="editData.emit($event)"
+                 (delete)="deleteData.emit($event)"></data-card>
+    </section>
+    <p *ngIf="!(data.length > 0)"
+       class="mat-body-strong">No data available</p>
+  </ng-container>
+</section>

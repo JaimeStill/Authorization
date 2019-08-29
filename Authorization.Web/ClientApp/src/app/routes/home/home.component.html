@@ -1,1 +1,23 @@
-<mat-toolbar>Home</mat-toolbar>
+<mat-toolbar>
+  <span>Dashboard</span>
+  <button mat-button (click)="openCategoryBin()">Category Bin</button>
+  <button mat-button (click)="openDataBin()">Data Bin</button>
+</mat-toolbar>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"
+                    color="accent"></mat-progress-bar>
+</ng-template>
+<ng-container *ngIf="dataSvc.categories$ | async as categories else loading">
+  <section fxLayout="column"
+           fxLayoutAlign="start stretch"
+           class="container"
+           *ngIf="categories.length > 0">
+    <category-data *ngFor="let c of categories"
+                   [category]="c"
+                   (edit)="editCategory($event)"
+                   (delete)="deleteCategory($event)"
+                   (editData)="editData($event)"
+                   (deleteData)="deleteData($event)"></category-data>
+  </section>
+  <p *ngIf="!(categories.length > 0)">No Categories Available</p>
+</ng-container>

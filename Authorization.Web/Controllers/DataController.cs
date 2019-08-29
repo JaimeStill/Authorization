@@ -29,17 +29,8 @@ namespace Authorization.Web.Controllers
         [HttpGet("[action]/{search}")]
         public async Task<List<TableCategory>> SearchDeletedCategories([FromRoute]string search) => await db.SearchCategories(search, true);
 
-        [HttpGet("[action]")]
-        public async Task<List<TableCategory>> GetCategoriesWithData() => await db.GetCategoriesWithData();
-
-        [HttpGet("[action]/{search}")]
-        public async Task<List<TableCategory>> SearchCategoriesWithData([FromRoute]string search) => await db.SearchCategoriesWithData(search);
-
         [HttpGet("[action]/{categoryId}")]
         public async Task<TableCategory> GetCategory([FromRoute]int categoryId) => await db.GetCategory(categoryId);
-
-        [HttpGet("[action]/{categoryId}")]
-        public async Task<TableCategory> GetCategoryWithData([FromRoute]int categoryId) => await db.GetCategoryWithData(categoryId);
 
         [HttpPost("[action]")]
         public async Task AddCategory([FromBody]TableCategory category) => await db.AddCategory(category);

@@ -32,42 +32,9 @@ namespace Authorization.Data.Extensions
             return categories;
         }
 
-        public static async Task<List<TableCategory>> GetCategoriesWithData(this AppDbContext db)
-        {
-            var categories = await db.TableCategories
-                .Include(x => x.TableData)
-                .Where(x => !x.IsDeleted)
-                .OrderBy(x => x.Label)
-                .ToListAsync();
-
-            return categories;                
-        }
-
-        public static async Task<List<TableCategory>> SearchCategoriesWithData(this AppDbContext db, string search)
-        {
-            var categories = await db.TableCategories
-                .Include(x => x.TableData)
-                .Where(x =>
-                    !x.IsDeleted &&
-                    x.Label.ToLower().Contains(search.ToLower())
-                )
-                .OrderBy(x => x.Label)
-                .ToListAsync();
-
-            return categories;
-        }
-
         public static async Task<TableCategory> GetCategory(this AppDbContext db, int categoryId)
         {
             var category = await db.TableCategories.FindAsync(categoryId);
-            return category;
-        }
-
-        public static async Task<TableCategory> GetCategoryWithData(this AppDbContext db, int categoryId)
-        {
-            var category = await db.TableCategories
-                .Include(x => x.TableData)
-                .FirstOrDefaultAsync(x => x.Id == categoryId);
 
             return category;
         }
@@ -109,6 +76,7 @@ namespace Authorization.Data.Extensions
                 .Include(x => x.TableCategory)
                 .Where(x => x.IsDeleted == isDeleted)
                 .OrderBy(x => x.Data)
+                .OrderBy(x => x.TableCategory.Label)
                 .ToListAsync();
 
             return data;
@@ -120,9 +88,11 @@ namespace Authorization.Data.Extensions
                 .Include(x => x.TableCategory)
                 .Where(x =>
                     x.IsDeleted == isDeleted &&
-                    x.Data.ToLower().Contains(search.ToLower())
+                    (x.Data.ToLower().Contains(search.ToLower()) ||
+                    x.TableCategory.Label.ToLower().Contains(search.ToLower()))
                 )
                 .OrderBy(x => x.Data)
+                .OrderBy(x => x.TableCategory.Label)
                 .ToListAsync();
 
             return data;

@@ -1,0 +1,36 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>
+    <span *ngIf="datum.id">Update Datum</span>
+    <span *ngIf="!(datum.id)">Add Datum</span>
+  </h2>
+  <mat-dialog-content>
+    <ng-template #loading>
+      <mat-progress-bar mode="indeterminate"
+                        color="accent"></mat-progress-bar>
+    </ng-template>
+    <ng-container *ngIf="dataSvc.categories$ | async as categories else loading">
+      <section fxLayout="column"
+               fxLayoutAlign="start stretch"
+               class="container">
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select [(ngModel)]="datum.tableCategoryId">
+            <mat-option *ngFor="let c of categories"
+                        [value]="c.id">{{c.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data</mat-label>
+          <input matInput
+                 [(ngModel)]="datum.data" />
+        </mat-form-field>
+      </section>
+    </ng-container>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button
+            (click)="saveDatum()">Save</button>
+    <button mat-button
+            mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>

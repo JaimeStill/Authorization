@@ -49,25 +49,7 @@ export class DataService {
       err => this.snacker.sendErrorMessage(err.error)
     );
 
-  getCategoriesWithData = () => this.http.get<TableCategory[]>(`/api/data/getCategoriesWithData`)
-    .subscribe(
-      data => this.categories.next(data),
-      err => this.snacker.sendErrorMessage(err.error)
-    );
-
-  searchCategoriesWithData = (search: string) => this.http.get<TableCategory[]>(`/api/data/searchCategoriesWithData/${search}`)
-    .subscribe(
-      data => this.categories.next(data),
-      err => this.snacker.sendErrorMessage(err.error)
-    );
-
   getCategory = (categoryId: number) => this.http.get<TableCategory>(`/api/data/getCategory/${categoryId}`)
-    .subscribe(
-      data => this.category.next(data),
-      err => this.snacker.sendErrorMessage(err.error)
-    );
-
-  getCategoryWithData = (categoryId: number) => this.http.get<TableCategory>(`/api/data/getCategoryWithData/${categoryId}`)
     .subscribe(
       data => this.category.next(data),
       err => this.snacker.sendErrorMessage(err.error)

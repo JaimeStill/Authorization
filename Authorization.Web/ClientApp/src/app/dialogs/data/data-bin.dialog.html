@@ -1,0 +1,36 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>Table Data Recycle Bin</h2>
+  <mat-dialog-content>
+    <ng-template #loading>
+      <mat-progress-bar mode="indeterminate"
+                        color="accent"></mat-progress-bar>
+    </ng-template>
+    <ng-container *ngIf="dataSvc.data$ | async as data else loading">
+      <section fxLayout="column"
+               fxLayoutAlign="start stretch"
+               class="container"
+               *ngIf="data.length > 0">
+        <section class="background card elevated container"
+                 fxLayout="row"
+                 fxLayoutAlign="start center"
+                 *ngFor="let d of data">
+          <p class="mat-body-strong"
+             fxFlex>{{d.data}}</p>
+          <p fxFlex
+             *ngIf="d.tableCategory?.label">{{d.tableCategory.label}}</p>
+          <button mat-button
+                  color="warn"
+                  (click)="removeData(d)">Remove</button>
+          <button mat-button
+                  (click)="restoreData(d)">Restore</button>
+        </section>
+      </section>
+      <p *ngIf="!(data.length > 0)"
+         class="mat-body-strong">Recycle Bin is Empty</p>
+    </ng-container>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button
+            mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>

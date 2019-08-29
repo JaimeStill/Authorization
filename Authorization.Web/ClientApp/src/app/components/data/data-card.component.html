@@ -1,0 +1,26 @@
+<section class="background card elevated"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         [style.width.px]="size">
+  <section fxLayout="column"
+           fxLayoutAlign="start stretch"
+           class="container"
+           fxFlex>
+    <p class="mat-body-strong">{{data.data}}</p>
+    <p *ngIf="data.tableCategory?.label">{{data.tableCategory.label}}</p>
+  </section>
+  <section fxLayout="column"
+           fxLayoutAlign="space-evenly center"
+           class="background stacked container"
+           *ngIf="editable">
+    <button mat-icon-button
+            (click)="edit.emit(data)">
+      <mat-icon>{{editIcon}}</mat-icon>
+    </button>
+    <button mat-icon-button
+            color="warn"
+            (click)="delete.emit(data)">
+      <mat-icon>{{deleteIcon}}</mat-icon>
+    </button>
+  </section>
+</section>

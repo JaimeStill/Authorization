@@ -1,1 +1,14 @@
-<mat-toolbar>Admin</mat-toolbar>
+<nav mat-tab-nav-bar
+     class="scrolled">
+  <a mat-tab-link
+     routerLink="categories"
+     routerLinkActive="active">
+    Categories
+  </a>
+  <a mat-tab-link
+     routerLink="data"
+     routerLinkActive="active">
+    Data
+  </a>
+</nav>
+<router-outlet></router-outlet>
